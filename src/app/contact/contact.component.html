@@ -1,0 +1,69 @@
+<!-- main app container -->
+
+
+
+
+<div class="row">
+    <div class="col-12 col-md-8">
+
+        <div class="card m-3">
+            <h1 class="card-header text-center">Feedback Form</h1>
+            <div class="card-body">
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label>Title</label>
+                            <select formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                                <option value=""></option>
+                                <option value="Mr">Mr</option>
+                                <option value="Mrs">Mrs</option>
+                                <option value="Miss">Miss</option>
+                                <option value="Ms">Ms</option>
+                            </select>
+                            <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                <div *ngIf="f.title.errors.required">Title is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-5">
+                            <label>First Name</label>
+                            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Last Name</label>
+                            <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-5">
+                        <label>Feedback Message</label>
+                        <textarea class="form-control" formControlName="textarea" name="textarea" rows="3" [ngClass]="{ 'is-invalid': submitted && f.textarea.errors }"></textarea>
+                        <div *ngIf="submitted && f.textarea.errors" class="invalid-feedback">
+                            <div *ngIf="f.textarea.errors.required">Message is required</div>
+                        </div>
+                    </div>
+                
+                 
+                  
+                    <div class="form-group form-check">
+                        <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                        <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                        <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary mr-1">Submit</button>
+                       
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  
+
+</div>
